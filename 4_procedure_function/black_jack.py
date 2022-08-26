@@ -28,21 +28,26 @@ def point_calc(card_list):
     for card in card_list:
         if card['number'] == 'A': a_included += 1
         sum += number_point[card['number']]
+    print('a included:', a_included)
     if sum > 21 and a_included > 0:
         sum = 0
         number_pattern = []
         for card in card_list:
             if card['number'] != 'A': sum += number_point[card['number']]
         tmp_sum = sum
-        for i in range(a_included):
-            for j in range(i):
-                for k in range(a_included):
-                    if j <= k: tmp_sum += 11
-                    else: tmp_sum += 1
+        for i in range(a_included+1):
+            # number_pattern.append(i)
+            for j in range(a_included):
+                if j < i: tmp_sum += 11
+                else: tmp_sum += 1
             number_pattern.append(tmp_sum)
             tmp_sum = sum
+        
         print(number_pattern)
-        sum = number_pattern.pop()
+        while True:
+            if len(number_pattern): sum = number_pattern.pop()
+            else: break
+            if sum <= 21: break
     return sum
 
 print("your turn")
