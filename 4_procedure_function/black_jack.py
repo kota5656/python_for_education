@@ -60,15 +60,16 @@ for i in range(2):
         cpu_card.append(trump.trump_drow())
     else: break
 
+'''
 print("your card list")
 trump.trump_printer2(player_card)
 
 print("cpu card list")
 trump.trump_printer2(cpu_card)
-print("cpu2 card list")
 
 print("public card list")
 trump.trump_printer()
+'''
 
 print(len(player_card))
 print(len(cpu_card))
