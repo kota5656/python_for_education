@@ -7,7 +7,7 @@ number = ['A', '2', '3', '4', '5', '6', '7',
 joker_on = True
 
 for i in suit:
-    for j in number:        
+    for j in number:
         trump_card.append({
             'suit': i,
             'number': j
