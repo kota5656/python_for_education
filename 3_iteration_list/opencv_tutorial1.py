@@ -7,8 +7,7 @@ opencv_tutorial.pyから見た相対パスではなく、
 パスの入力に注意しましょう。
 (あるいは絶対パスを打ってもOKです。)
 '''
-
-src = cv2.imread("./img/Lenna.bmp")
+src = cv2.imread("./3_iteration_list/img/Lenna.bmp")
 
 cv2.imshow('output_image', src)
 cv2.waitKey()
