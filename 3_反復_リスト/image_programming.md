@@ -15,6 +15,7 @@
 - 規格の概念
 - ファイルI/Oの概念
 - 多重往復処理の概念
+- 中学・高校の数学, 物理
 
 [コンピュータにおける三原色について](http://yokoyamatakashi.com/archives/1306)  
 [グラフィックにおけるピクセルの概念](https://e-words.jp/w/%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB.html)
