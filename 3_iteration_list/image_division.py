@@ -41,8 +41,8 @@ height = int(height)
 
 dst_list = []
 
-for row in range(row_length):
-    for col in range(col_length):
+for col in range(col_length):
+    for row in range(row_length):
         dst_list.append(src[y0+col*height:y0+(col+1)*height, x0+row*width:x0+(row+1)*width])
         # print("ok")
 
