@@ -14,6 +14,9 @@ src = cv2.imread("./3_iteration_list/input/nc149853.png")
 src_width, src_height, color = src.shape
 print("元画像の横幅:", src_width, "元画像の縦幅:", src_height)
 
+cv2.imshow("input_image", src)
+cv2.waitKey()
+
 print("出力画像名を入力してください: ", end="")
 name = input()
 
@@ -48,3 +51,5 @@ count = 0
 for dst in dst_list:
     count += 1
     cv2.imwrite("./3_iteration_list/output/"+name+str(count)+".png", dst)
+
+cv2.destroyAllWindows()
