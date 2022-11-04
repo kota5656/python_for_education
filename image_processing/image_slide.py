@@ -24,8 +24,8 @@ sin wave shift
 single_wave = 2 * np.pi
 wave_amp_w = 8
 wave_amp_h = 6
-wave_phase_w = 30
-wave_phase_h = 30
+wave_phase_w = 50
+wave_phase_h = 20
 wave_freq_w = 4
 wave_freq_h = 5
 
