@@ -42,6 +42,9 @@ for i in range(width):
     dst[:, i, :] = np.roll(dst[:, i, :], wave, axis=0)
     dst[0:wave, i, :] = np.array([0,0,0])
 
+# dst = dst[2*wave_amp_h:, 2*wave_amp_w:]
+# dst = cv2.resize(dst, dsize=(height, width))
+
 cv2.imshow('input_image', src)
 cv2.imshow('output_image', dst)
 cv2.waitKey()
