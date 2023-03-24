@@ -1,11 +1,12 @@
+import random
 import trump
 
-trump.trump_printer()
+trump.trump_printer(trump.trump_card)
 
 player_card = []
 cpu_card = []
 
-number_point = {
+number_hierarchy = {
     'A': 11,
     '2': 2,
     '3': 3,
@@ -27,13 +28,13 @@ def point_calc(card_list):
     sum = 0
     for card in card_list:
         if card['number'] == 'A': a_included += 1
-        sum += number_point[card['number']]
+        sum += number_hierarchy[card['number']]
     # print('a included:', a_included)
     if sum > 21 and a_included > 0:
         sum = 0
         number_pattern = []
         for card in card_list:
-            if card['number'] != 'A': sum += number_point[card['number']]
+            if card['number'] != 'A': sum += number_hierarchy[card['number']]
         tmp_sum = sum
         for i in range(a_included+1):
             # number_pattern.append(i)
@@ -52,7 +53,8 @@ def point_calc(card_list):
 
         
 if __name__ == '__main__':
-    print("your turn")
+    random.shuffle(trump.trump_card)
+    
     for i in range(2):
         if len(trump.trump_card) > 0:
             player_card.append(trump.trump_drow())
@@ -61,53 +63,18 @@ if __name__ == '__main__':
         if len(trump.trump_card) > 0:
             cpu_card.append(trump.trump_drow())
         else: break
-
-    '''
-    print("your card list")
-    trump.trump_printer2(player_card)
-
-    print("cpu card list")
-    trump.trump_printer2(cpu_card)
-
-    print("public card list")
-    trump.trump_printer()
-    '''
-
-    print(len(player_card))
-    print(len(cpu_card))
-
-    '''
-    point = point_calc([
-        {
-            'suit': 'heart',
-            'number': 'A'
-        },
-        {
-            'suit': 'diamond',
-            'number': 'A'
-        },
-        {
-            'suit': 'crover',
-            'number': 'A'
-        },
-        {
-            'suit': 'speed',
-            'number': 'A'
-        },
-        {
-            'suit': 'speed',
-            'number': '5'
-        },
-    ])
-    print(point)
-    '''
+    cpu_card[0]["is_opened"] = True
+    print("all cards")
+    print(player_card)
+    print(cpu_card)
+    print("your turn")
 
     '''
     player turn
     '''
     while True:
         print('現在のあなたのカード')
-        trump.trump_printer2(player_card)
+        trump.trump_printer(player_card)
         print('現在の合計得点:', point_calc(player_card))
         print("カードを引きますか？: (y/N)")
         text = input()
@@ -123,7 +90,7 @@ if __name__ == '__main__':
 
     while True:
         print('現在のCPUのカード')
-        trump.trump_printer2(cpu_card)
+        trump.trump_printer(cpu_card)
         print('現在の合計得点:', point_calc(cpu_card))
         
         if point_calc(cpu_card) >= 17:
