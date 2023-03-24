@@ -1,41 +1,31 @@
 import random
 import trump
 
-def throw_pair_cards(member_hand):
-    number_count_dict = {
-        'A': [],
-        '2': [],
-        '3': [],
-        '4': [],
-        '5': [],
-        '6': [],
-        '7': [],
-        '8': [],
-        '9': [],
-        '10': [],
-        'J': [],
-        'Q': [],
-        'K': [],
-        'joker': [],
-    }
-    card_registered = []
-    card_index = 0
-    for card in member_hand:
-        number_count_dict[card["number"]].append(card_index)
-        card_index += 1
-    print(number_count_dict)
-    for card_index_list in number_count_dict.values:
-        if len(card_index_list) >= 2:
-            if len(card_index_list) == 4:
-                trump.trump_card.append(member_hand[card_index_list[0]])
-                trump.trump_card.append(member_hand[card_index_list[1]])
-                trump.trump_card.append(member_hand[card_index_list[2]])
-                trump.trump_card.append(member_hand[card_index_list[3]])
-            else:
-                trump.trump_card.append(member_hand[card_index_list[0]])
-                trump.trump_card.append(member_hand[card_index_list[1]])
-                
-    print()
+# 手札の中から被った2枚を山札へ還す処理
+def throw_pair_cards(member_hand: list):
+    throw_index_list = []
+    for number in trump.number:
+        card_index_list = []
+        for card_index in range(len(member_hand)):
+            if member_hand[card_index]["number"] == number:
+                card_index_list.append(card_index)
+        if len(card_index_list) // 2 == 1:
+            throw_index_list.append(card_index_list[0])
+            throw_index_list.append(card_index_list[1])
+        if len(card_index_list) == 4:
+            for card_index in card_index_list:
+                throw_index_list.append(card_index)
+    
+    new_card_list = []
+    for card_index in range(len(member_hand)):
+        hit = False
+        for throw_index in throw_index_list:
+            if card_index == throw_index: hit = True
+        if hit: trump.trump_card.append(member_hand[card_index])
+        else: new_card_list.append(member_hand[card_index])
+    
+    return new_card_list
+
 
 
 
@@ -58,13 +48,15 @@ for i in range(member_count):
 
 while trump.trump_card != []:
     for member in members:
-        if trump.trump_card != []:
+        if trump.trump_card != []: # メンバーが一巡する途中でカードを切らすのを防ぐため
             member["hand"].append(trump.trump_drow(trump.trump_card))
 
 for member in members:
-    member["hand"] = trump.trump_sort(member["hand"])
+    member["hand"] = trump.trump_sort_by_number(member["hand"])
+    member["hand"] = throw_pair_cards(member["hand"])
     trump.trump_printer(member["hand"])
-    throw_pair_cards(member["hand"])
+
+trump.trump_printer(trump.trump_card)
 
 turn = 0
 while ranking <= member_count-1:
