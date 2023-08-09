@@ -1,0 +1,32 @@
+[
+    {
+        "id": 0,
+        "name": "Satoshi",
+        "age": 10,
+        "has-driver-license": false
+    },
+    {
+        "id": 1,
+        "name": "Hikari",
+        "age": 10,
+        "has-driver-license": false
+    },
+    {
+        "id": 2,
+        "name": "Takeshi",
+        "age": 15,
+        "has-driver-license": true
+    },
+    {
+        "id": 3,
+        "name": "Musashi",
+        "age": 29,
+        "has-driver-license": false
+    },
+    {
+        "id": 4,
+        "name": "Kojiro",
+        "age": 32,
+        "has-driver-license": true
+    }
+]
