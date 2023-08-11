@@ -10,6 +10,8 @@ with open(input_file_name, mode='r') as f:
     for row in reader:
         column.append(row)
 
+print(column)
+
 # mode a, not rewrite data, but add data
 with open(output_file_name, mode='w') as f:
     writer = csv.writer(f)
