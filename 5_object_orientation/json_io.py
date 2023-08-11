@@ -8,8 +8,9 @@ json_data = {}
 with open(input_file_name, mode='r') as f:
     json_data = json.load(f)
 
-print(json_data)
-print(type(json_data))
+json_data["name"] = "Kotaro Tomita"
+json_data["age"] = 15
+json_data["has-driver-license"] = False
 
 # mode a, not rewrite data, but add data
 with open(output_file_name, mode='w') as f:

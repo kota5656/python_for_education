@@ -1,17 +1,7 @@
 {
-    "0": {
-        "name": "Satoshi",
-        "age": 10,
+    "3": {
+        "name": "Musashi",
+        "age": 29,
         "has-driver-license": false
-    },
-    "1": {
-        "name": "Hikari",
-        "age": 10,
-        "has-driver-license": false
-    },
-    "4": {
-        "name": "Kojiro",
-        "age": 32,
-        "has-driver-license": true
     }
 }

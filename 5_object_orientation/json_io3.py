@@ -11,7 +11,7 @@ with open(input_file_name, mode='r') as f:
 
 for key, value in input_json_data.items():
     print(key, value)
-    if int(key) in [0, 1, 4]: # ORでの複数の一致検索をやる場合の構文
+    if int(key) in [0, 2, 3] and not value["has-driver-license"] and value["age"] >= 18: # ORでの複数の一致検索をやる場合の構文
         output_json_data[key] = value
 
 print(output_json_data)
